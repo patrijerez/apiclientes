@@ -19,15 +19,17 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+	@Column(nullable = false)
 	private String nombre;
 	private String apellido;
+	@Column(nullable = false, unique = true)
 	private String email;
 	private int telefono;
 	
 	@Column(name="create_ad")
 	@Temporal(TemporalType.DATE)
 	private Date createAd;
+	private String imagen;
 	
 	//Para que cada vez que se crea un cliente, tome como fecha la del sistema:
 	@PrePersist
@@ -74,6 +76,16 @@ public class Cliente {
 	}
 	public void setCreateAd(Date createAd) {
 		this.createAd = createAd;
+	}
+
+
+	public String getImagen() {
+		return imagen;
+	}
+
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	
 	
